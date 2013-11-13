@@ -3,7 +3,7 @@ TibcoBuilder
 This plugin enable you to integrate TIBCO artifacts builds into jenkins CI.
 
 
-Disclaimer
+Disclaimer <br/>
 TIBCO, the TIBCO logo and 
 TIBCO Software are trademarks or 
 registered trademarks of TIBCO Software Inc. 
