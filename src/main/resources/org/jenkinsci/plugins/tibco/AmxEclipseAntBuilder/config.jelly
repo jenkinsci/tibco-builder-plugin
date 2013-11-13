@@ -1,0 +1,39 @@
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <!--
+    This jelly script is used for per-project configuration.
+
+    See global.jelly for a general discussion about jelly script.
+  -->
+
+
+
+<f:entry field="name" title="Tibco Installation">
+   <f:select />
+</f:entry>
+
+
+<f:entry field="targets" title="Tibco Ant Targets">
+<f:textbox />
+</f:entry>
+
+<f:advanced>
+<f:entry field="buildFile" title="Tibco Ant Build File">
+<f:textbox />
+</f:entry>
+<f:entry field="businessStudioWs" title="Tibco BusinessStudio WorkSpace">
+<f:textbox />
+</f:entry>
+<f:entry field="properties" title="Tibco Ant Properties">
+<f:textbox />
+</f:entry>
+<f:entry field="antOpts" title="Tibco Ant Options">
+<f:textbox />
+</f:entry>
+<f:entry field="amxEclipseAntTra" title="Tibco TRA Properties File">
+<f:textbox />
+</f:entry>
+</f:advanced>
+
+
+
+</j:jelly>
