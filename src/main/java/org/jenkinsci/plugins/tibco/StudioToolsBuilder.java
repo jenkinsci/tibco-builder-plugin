@@ -1,39 +1,51 @@
 /**
+ * The MIT License
  * 
+ * Copyright (c) 2013 - 2014, Federico Pastore
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE. 
  */
 package org.jenkinsci.plugins.tibco;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import javax.servlet.ServletException;
-
-import org.jenkinsci.plugins.tibco.AmxEclipseAntBuilder.DescriptorImpl;
-import org.jenkinsci.plugins.tibco.axmeclipseant.TibcoConsoleAnnotator;
-import org.jenkinsci.plugins.tibco.installation.TibcoInstallation;
-import org.jenkinsci.plugins.tibco.studiotools.StudioToolsConsoleAnnotator;
-import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.QueryParameter;
 
 import hudson.CopyOnWrite;
 import hudson.EnvVars;
 import hudson.Extension;
-import hudson.FilePath;
 import hudson.Launcher;
 import hudson.Util;
+import hudson.model.BuildListener;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
-import hudson.model.BuildListener;
 import hudson.model.Computer;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Builder;
 import hudson.tools.ToolInstallation;
 import hudson.util.ArgumentListBuilder;
-import hudson.util.FormValidation;
-import hudson.util.ListBoxModel;
 import hudson.util.VariableResolver;
+import hudson.util.ListBoxModel;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jenkinsci.plugins.tibco.installation.TibcoInstallation;
+import org.jenkinsci.plugins.tibco.studiotools.StudioToolsConsoleAnnotator;
+import org.kohsuke.stapler.DataBoundConstructor;
 
 /**
  * @author federicopastore
