@@ -1,4 +1,4 @@
-TibcoBuilder
+Tibco Builder Plugin
 ============
 This plugin enable you to integrate TIBCO artifacts builds into jenkins CI.
 
