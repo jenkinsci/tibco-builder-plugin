@@ -1,0 +1,20 @@
+#release configuration
+#Thu Nov 14 21:20:10 CET 2013
+scm.commentPrefix=[maven-release-plugin] 
+scm.password=f3d3r1c0
+pushChanges=true
+project.scm.org.jenkins-ci.plugins\:tibco-builder.connection=scm\:git\:git\://github.com/jenkinsci/tibco-builder-plugin.git
+project.scm.org.jenkins-ci.plugins\:tibco-builder.developerConnection=scm\:git\:git\://github.com/jenkinsci/tibco-builder-plugin.git
+project.scm.org.jenkins-ci.plugins\:tibco-builder.tag=HEAD
+scm.tag=tibco-builder-1.0
+remoteTagging=true
+exec.additionalArguments=-P jenkins
+project.scm.org.jenkins-ci.plugins\:tibco-builder.url=https\://github.com/jenkinsci/tibco-builder-plugin.git
+scm.url=scm\:git\:git\://github.com/jenkinsci/tibco-builder-plugin.git
+scm.tagNameFormat=@{project.artifactId}-@{project.version}
+preparationGoals=clean verify
+scm.username=federicopastore
+exec.snapshotReleasePluginAllowed=false
+project.dev.org.jenkins-ci.plugins\:tibco-builder=1.1-SNAPSHOT
+project.rel.org.jenkins-ci.plugins\:tibco-builder=1.0
+completedPhase=scm-commit-release
