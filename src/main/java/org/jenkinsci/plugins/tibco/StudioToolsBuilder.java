@@ -187,7 +187,6 @@ public class StudioToolsBuilder extends Builder {
             String errorMessage = "StudioTools_ExecFailed";//Messages.TibcoAnt_ExecFailed();
             if(ti==null && (System.currentTimeMillis()-startTime)<1000) {
                 if(getDescriptor().getTibcoInstallations()==null)
-                    // looks like the user didn't configure any Ant installation
                     errorMessage += "GlobalConfigNeeded";//Messages.TibcoAnt_GlobalConfigNeeded();
                 else
                     // There are Ant installations configured but the project didn't pick it

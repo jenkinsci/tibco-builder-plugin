@@ -37,7 +37,6 @@ import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Builder;
 import hudson.tools.ToolInstallation;
 import hudson.util.ArgumentListBuilder;
-import hudson.util.FormValidation;
 import hudson.util.VariableResolver;
 import hudson.util.ListBoxModel;
 
@@ -47,14 +46,9 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.servlet.ServletException;
-
-import net.sf.json.JSONObject;
-
 import org.jenkinsci.plugins.tibco.axmeclipseant.TibcoConsoleAnnotator;
 import org.jenkinsci.plugins.tibco.installation.TibcoInstallation;
 import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
 
 /**
@@ -198,13 +192,13 @@ public class AmxEclipseAntBuilder extends Builder {
         
         String exe=null;
         if(ti==null) {
-                listener.fatalError("ExecutableNotFound");//Messages.TibcoAnt_ExecutableNotFound(tai.getName()));
+                listener.fatalError(Messages.ExecutableNotFound(ti.getName()));
         } else {
             ti = ti.forNode(Computer.currentComputer().getNode(), listener);
             ti = ti.forEnvironment(env);
             exe = ti.getAmxEclipseAntExecutable(launcher);
             if (exe==null) {
-                listener.fatalError("ExecutableNotFound");//Messages.TibcoAnt_ExecutableNotFound(tai.getName()));
+                listener.fatalError(Messages.ExecutableNotFound(ti.getName()));
                 return false;
             }
             args.add(exe);
@@ -227,7 +221,7 @@ public class AmxEclipseAntBuilder extends Builder {
                 buildFilePath = buildFilePath2;
             } else {
                 // neither file exists. So this now really does look like an error.
-                listener.fatalError("Unable to find build script at "+buildFilePath);
+                listener.fatalError(Messages.UnableToFindBuildFile(buildFilePath));//("Unable to find build script at "+buildFilePath);
                 return false;
             }
         }
@@ -295,11 +289,11 @@ public class AmxEclipseAntBuilder extends Builder {
             String errorMessage = "Ant_ExecFailed";//Messages.TibcoAnt_ExecFailed();
             if(ti==null && (System.currentTimeMillis()-startTime)<1000) {
                 if(getDescriptor().getTibcoInstallations()==null)
-                    // looks like the user didn't configure any Ant installation
-                    errorMessage += "GlobalConfigNeeded";//Messages.TibcoAnt_GlobalConfigNeeded();
+                    // looks like the user didn't configure any Tibco installation
+                    errorMessage += Messages.GlobalConfigNeeded();
                 else
-                    // There are Ant installations configured but the project didn't pick it
-                    errorMessage += "ProjectConfigNeeded";//Messages.TibcoAnt_ProjectConfigNeeded();
+                    // There are Tibco installations configured but the project didn't pick it
+                    errorMessage += Messages.ProjectConfigNeeded();
             }
             e.printStackTrace( listener.fatalError(errorMessage) );
             return false;
@@ -377,8 +371,6 @@ public class AmxEclipseAntBuilder extends Builder {
 		
 
 		public boolean isApplicable(Class<? extends AbstractProject> aClass) {
-			// Indicates that this builder can be used with all kinds of project
-			// types
 			return true;
 		}
 
@@ -386,7 +378,7 @@ public class AmxEclipseAntBuilder extends Builder {
 		 * This human readable name is used in the configuration screen.
 		 */
 		public String getDisplayName() {
-			return "Tibco Eclipse Ant Builder";
+			return Messages.AMXEclipseAntDisplayName();
 		}
 
 	}
