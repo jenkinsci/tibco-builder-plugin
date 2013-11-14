@@ -255,13 +255,15 @@ public class AmxEclipseAntBuilder extends Builder {
         args.addKeyValuePairs("-D",build.getBuildVariables(),sensitiveVars);
 
         args.addKeyValuePairsFromPropertyString("-D",properties,vr,sensitiveVars);
+        
         if(targets!=null)
                 args.addTokenized(targets.replaceAll("[\t\r\n]+"," "));
 
         if(ti!=null)
             ti.buildEnvVars(env);
-        if(antOpts!=null)
-            env.put("ANT_OPTS",env.expand(antOpts));
+        
+        if(this.antOpts!=null)
+            env.put("ANT_OPTS",env.expand(this.antOpts));
 
         if(!launcher.isUnix()) {
             args = args.toWindowsCommand();

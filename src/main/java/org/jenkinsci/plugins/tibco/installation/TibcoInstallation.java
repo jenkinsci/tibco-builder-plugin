@@ -178,7 +178,7 @@ EnvironmentSpecific<TibcoInstallation>, NodeSpecific<TibcoInstallation>{
 	    		//for(int i = 0; i<list.length;i++){
 				InputSource source = new InputSource(new FileInputStream(new File(installInfo,list[0])));//TODO add combo with more exec version for installation
 				installPath= (String)xpath.evaluate("/TIBCOInstallerFeatures/installerFeature[@name=\"sds-core\"]/assemblyList/assembly[@uid=\"product_tibco_com_tibco_amx_eclipse_ant\"]/@installLocation", source,XPathConstants.STRING);
-				String execVersion= (String)xpath.evaluate("/TIBCOInstallerFeatures/installerFeature[@name=\"sds-core\"]/assemblyList/assembly[@uid=\"product_tibco_com_tibco_amx_eclipse_ant\"]/@version", source,XPathConstants.STRING);
+				//String execVersion= (String)xpath.evaluate("/TIBCOInstallerFeatures/installerFeature[@name=\"sds-core\"]/assemblyList/assembly[@uid=\"product_tibco_com_tibco_amx_eclipse_ant\"]/@version", source,XPathConstants.STRING);
 				//TibcoExecVersion version = new TibcoExecVersion(i, installPath, execName, execVersion);
 				//this.addTibcoExecVersion(version);
 	    		//}
@@ -219,7 +219,6 @@ EnvironmentSpecific<TibcoInstallation>, NodeSpecific<TibcoInstallation>{
 		}
     }
 	    
-	    System.out.println("findTibcoExecutable "+installPath+"      "+execName);
 		return new File(installPath,execName);
 	}
 
