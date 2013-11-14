@@ -29,24 +29,24 @@ THE SOFTWARE.
 
 
 <f:entry field="targets" title="Tibco Ant Targets">
-<f:textbox />
+<f:expandableTextbox />
 </f:entry>
 
 <f:advanced>
 <f:entry field="buildFile" title="Tibco Ant Build File">
-<f:textbox />
+<f:expandableTextbox />
 </f:entry>
 <f:entry field="businessStudioWs" title="Tibco BusinessStudio WorkSpace">
-<f:textbox />
+<f:expandableTextbox />
 </f:entry>
 <f:entry field="properties" title="Tibco Ant Properties">
-<f:textbox />
+<f:expandableTextbox />
 </f:entry>
 <f:entry field="antOpts" title="Tibco Ant Options">
-<f:textbox />
+<f:expandableTextbox />
 </f:entry>
 <f:entry field="amxEclipseAntTra" title="Tibco TRA Properties File">
-<f:textbox />
+<f:expandableTextbox />
 </f:entry>
 </f:advanced>
 

@@ -166,7 +166,7 @@ EnvironmentSpecific<TibcoInstallation>, NodeSpecific<TibcoInstallation>{
     private File findTibcoExecutable(String home, String execName) {
     	String installPath="";
     	File installInfo= new File(home, "_installInfo");
-    	if(execName.equals("amx_eclipse_ant")){
+    	if(execName.startsWith("amx_eclipse_ant")){
     	
 		WildcardFileFilter filter =new WildcardFileFilter("amx-design_*_prodInfo.xml");
 		String [] list =installInfo.list(filter);
