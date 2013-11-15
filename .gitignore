@@ -3,3 +3,5 @@
 .project
 target
 work
+release.properties
+pom.xml.*
