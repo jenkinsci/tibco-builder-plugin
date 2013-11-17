@@ -57,7 +57,13 @@ public class StudioToolsBuilder extends Builder {
 	private final String name;
 	private final String operation;
 	private final String projectDir;
+	private final String outputArchiveFile;
+	
+	private final String extendedClassPath;
+
+	
 	private final String TRAPropertyFile;
+	private final boolean overwriteOutput;
 
 
 
@@ -66,16 +72,37 @@ public class StudioToolsBuilder extends Builder {
 
 
 	@DataBoundConstructor
-	public StudioToolsBuilder(String name, String operation, String projectDir, String TRAPropertyFIle){
-		this.name=name;
-		this.operation=operation;
-		this.projectDir=projectDir;
-		this.TRAPropertyFile=TRAPropertyFIle;
+	public StudioToolsBuilder(String name, String operation, String projectDir,String outputArchiveFile, String extendedClassPath, boolean overwriteOutput, String TRAPropertyFIle){
+		this.name=Util.fixEmptyAndTrim(name);
+		this.operation=Util.fixEmptyAndTrim(operation);
+		this.projectDir=Util.fixEmptyAndTrim(projectDir);
+		this.outputArchiveFile=Util.fixEmptyAndTrim(outputArchiveFile);
+		this.extendedClassPath=Util.fixEmptyAndTrim(extendedClassPath);
+		this.overwriteOutput=overwriteOutput;
+		this.TRAPropertyFile=Util.fixEmptyAndTrim(TRAPropertyFIle);
 
 	}
 	
 	
 	
+	public boolean isOverwriteOutput() {
+		return overwriteOutput;
+	}
+
+
+
+	public String getOutputArchiveFile() {
+		return outputArchiveFile;
+	}
+
+
+
+	public String getExtendedClassPath() {
+		return extendedClassPath;
+	}
+
+
+
 	public String getTRAPropertyFile() {
 		return TRAPropertyFile;
 	}
@@ -112,6 +139,7 @@ public class StudioToolsBuilder extends Builder {
 		return null;
 	}
 	
+	
 	@Override
     public boolean perform(AbstractBuild<?,?> build, Launcher launcher, BuildListener listener) throws InterruptedException, IOException {
         ArgumentListBuilder args = new ArgumentListBuilder();
@@ -147,6 +175,17 @@ public class StudioToolsBuilder extends Builder {
 	        args.add("-p", projectDir);
 	    }
         
+	    if(this.isOverwriteOutput()){
+	    	args.add("-x");
+	    }
+	    if(this.outputArchiveFile!=null){
+	    	args.add("-o", this.outputArchiveFile);
+	    }
+	    
+	    if(this.extendedClassPath!=null){
+	    	args.add("-cp",this.extendedClassPath);
+	    }
+	    
 	    if(TRAPropertyFile!=null) {
 	        args.add("--propFile", TRAPropertyFile);
 	    }else{
@@ -233,6 +272,9 @@ public class StudioToolsBuilder extends Builder {
 					TibcoInstallation.DescriptorImpl.class);
 		}
 
+		
+
+
 		public TibcoInstallation[] getTibcoInstallations() {
 			return getToolDescriptor().getInstallations();
 		}
@@ -246,14 +288,15 @@ public class StudioToolsBuilder extends Builder {
 		}
 		
 
+
 		public ListBoxModel doFillOperationItems() {
 			ListBoxModel items = new ListBoxModel();
-			items.add( "Import Designer Project","importDesigner");
-			items.add("Migrate Coherence Function Calls", "migrateCoherenceCalls");
-			items.add("Import Existing TIBCO BusinessEvents Studio Project","importExistingProject");
-			items.add("Create TIBCO BusinessEvents Studio 5.1 Project Library","buildLibrary");
+			//items.add( "Import Designer Project","importDesigner");
+			//items.add("Migrate Coherence Function Calls", "migrateCoherenceCalls");
+			//items.add("Import Existing TIBCO BusinessEvents Studio Project","importExistingProject");
+			//items.add("Create TIBCO BusinessEvents Studio 5.1 Project Library","buildLibrary");
 			items.add("Build Enterprise Archive","buildEar");
-			items.add("Generate Class","generateClass");
+			//items.add("Generate Class","generateClass");
 			return items;
 		}
 		/**
@@ -265,10 +308,9 @@ public class StudioToolsBuilder extends Builder {
 		}
 
 
+		
 
 		public boolean isApplicable(Class<? extends AbstractProject> aClass) {
-			// Indicates that this builder can be used with all kinds of project
-			// types
 			return true;
 		}
 
@@ -279,26 +321,5 @@ public class StudioToolsBuilder extends Builder {
 			return "Tibco Business Events Builder";
 		}
 
-		/*
-		 * @Override public boolean configure(StaplerRequest req, JSONObject
-		 * formData) throws FormException { // To persist global configuration
-		 * information, // set that to properties and call save(). useFrench =
-		 * formData.getBoolean("useFrench"); // ^Can also use req.bindJSON(this,
-		 * formData); // (easier when there are many fields; need set* methods
-		 * for this, like setUseFrench) save(); return
-		 * super.configure(req,formData); }
-		 */
-
-		/**
-		 * This method returns true if the global configuration says we should
-		 * speak French.
-		 * 
-		 * The method name is bit awkward because global.jelly calls this method
-		 * to determine the initial state of the checkbox by the naming
-		 * convention.
-		 */
-		/*
-		 * public boolean getUseFrench() { return useFrench; }
-		 */
 	}
 }

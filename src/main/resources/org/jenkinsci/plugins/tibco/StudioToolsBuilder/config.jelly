@@ -41,4 +41,16 @@ THE SOFTWARE.
 <f:textbox />
 </f:entry>
 
+<f:entry field="outputArchiveFile" title="Tibco Studio Tools outputArchiveFile">
+<f:textbox />
+</f:entry>
+
+<f:entry field="overwriteOutput" title="Overwrite output">
+<f:checkbox />
+</f:entry>
+
+<f:entry field="extendedClassPath" title="Tibco Studio Tools extended classpath">
+<f:textbox />
+</f:entry>
+
 </j:jelly>
