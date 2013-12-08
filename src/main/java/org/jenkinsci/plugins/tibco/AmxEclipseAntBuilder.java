@@ -288,7 +288,7 @@ public class AmxEclipseAntBuilder extends Builder {
         } catch (IOException e) {
             Util.displayIOException(e,listener);
 
-            String errorMessage = "Ant_ExecFailed";//Messages.TibcoAnt_ExecFailed();
+            String errorMessage = Messages.ExecFailed();
             if(ti==null && (System.currentTimeMillis()-startTime)<1000) {
                 if(getDescriptor().getTibcoInstallations()==null)
                     // looks like the user didn't configure any Tibco installation
