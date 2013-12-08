@@ -234,7 +234,7 @@ public class AmxEclipseAntBuilder extends Builder {
 	    }else{
 	    	
 	    	if(!launcher.isUnix()){
-	    		args.add("--propFile",exe.substring(exe.indexOf(".exe")).concat(".tra"));
+	    		args.add("--propFile",exe.substring(0,exe.indexOf(".exe")).concat(".tra"));
 	    	}
 	    	else{
 	    		args.add("--propFile",exe.concat(".tra"));
