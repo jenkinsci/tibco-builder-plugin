@@ -86,7 +86,6 @@ EnvironmentSpecific<TibcoInstallation>, NodeSpecific<TibcoInstallation>{
 	 * 
 	 */
 	private static final long serialVersionUID = -1010286355295860854L;
-	private Map<String, TibcoExecVersion> tibcoExecVersions = new HashMap<String, TibcoExecVersion>();
 
 	@DataBoundConstructor
 	public TibcoInstallation(String name, String home, List<? extends ToolProperty<?>> properties) {
@@ -223,16 +222,6 @@ EnvironmentSpecific<TibcoInstallation>, NodeSpecific<TibcoInstallation>{
 	}
 
 
-    private void addTibcoExecVersion(TibcoExecVersion execversion){
-    	tibcoExecVersions.put(execversion.getId(), execversion);
-    }
-    /**
-     * 
-     * */
-    public Map getTibcoExecVersion(){
-
-		return tibcoExecVersions ;
-    }
 
 	/**
      * Returns true if the executable exists.
